@@ -16,7 +16,6 @@ const io = socketio(server)
 app.use(router)
 app.use(cors())
 
-
 //all the code will run inside this function
 io.on('connection', (socket) => {
 
@@ -29,10 +28,11 @@ io.on('connection', (socket) => {
 
         socket.join(user.room)
 
-        socket.emit('message', { user: 'admin', text: `${user.name} is in da ${user.room}`  })
-        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} is in da ${user.room}`})
+        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} is in thee ${user.room}`})
+        socket.emit('message', { user: 'admin', text: `${user.name} is in the ${user.room}`  })
         
 
+        
         io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
 
         
@@ -49,6 +49,19 @@ io.on('connection', (socket) => {
         callback()
     })
 
+    socket.on('showMessage', (message, callback) => {
+        const user = getUser(socket.id)
+
+        console.log(message)
+
+        
+            io.to(user.room).emit('liveEdit', { user: user.name, text: message})
+
+        
+
+        callback()
+    })
+
 
     socket.on('disconnect', () => {
 
@@ -61,8 +74,6 @@ io.on('connection', (socket) => {
         }
     })
 })
-
-
 
 server.listen(PORT, () => console.log(`Server on port ${PORT}`))
 

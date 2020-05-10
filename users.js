@@ -19,6 +19,7 @@ const addUser = ({ id, name, room }) => {
 
 }
 
+
 const removeUser = (id) => {
     
     let index
