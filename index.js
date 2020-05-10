@@ -28,8 +28,8 @@ io.on('connection', (socket) => {
 
         socket.join(user.room)
 
-        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} is in thee ${user.room}`})
-        socket.emit('message', { user: 'admin', text: `${user.name} is in the ${user.room}`  })
+        socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} joined ${user.room}`})
+        socket.emit('message', { user: 'admin', text: `welcome to ${user.room} ${user.name}!`  })
         
 
         
