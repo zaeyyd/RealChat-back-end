@@ -14,7 +14,7 @@ const server = http.createServer(app)
 const io = socketio(server)
 
 app.use(router)
-app.use(cors())
+app.use(cors({origin: '*'}))
 
 //all the code will run inside this function
 io.on('connection', (socket) => {
