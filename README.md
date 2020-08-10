@@ -1,3 +1,4 @@
+
 # Real Chat
 
 See what everyone is typing in real-time
@@ -10,16 +11,19 @@ See what everyone is typing in real-time
 ## Technologies used:
 
 ### Backend
-* NodeJS
+* Node.js
 * Socket.io
+* Express
 
 
 ### Frontend
-* React
-* React Hooks
+* React (w/ Hooks)
+* CSS
 
 ### Join Page
 ![screenshot of Real Chat Join Page](media/joinSC.png) 
 
 ### Chat Page
 ![screenshot of Real Chat](media/chatSC.png) 
+
+
